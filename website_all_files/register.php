@@ -34,13 +34,13 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 		}
 
-		
+
 		$studentidsql = "SELECT * FROM `login` WHERE studentid = '$studentid'";
 		$studentidsqlres = mysqli_query( $connection, $studentidsql );
 		$count = mysqli_num_rows( $studentidsqlres );
 
 		if ( $count == 1 ) {
-			$fmsg .= "Student ID Already Exists";
+			$fmsg = "Student ID Already Exists";
 			$error = "true";
 
 		}
@@ -50,34 +50,39 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		$count = mysqli_num_rows( $studentidsqlres );
 
 		if ( $count == 1 ) {
-			$csmsg .= "Connected to student account!";
+			$csmsg .= "Student exists in database... Attempting to create account.";
 			$studentexists = "true";
+
+		} else {
+		    // $error = "true";
 
 		}
 
 		if ( $error != "true"
-			and $studentexists = "true" ) {
+	/*and $studentexists == "true" */) {
 
 			$sql = "INSERT INTO login (username, contact, password, studentid) VALUES ('$username', '$email', '$password', '$studentid');";
+			$year = substr($studentid,0,4);
+			$sql2 = "INSERT INTO students (studentid, name, contact, year, position) VALUES ('$studentid', '$username', '$email', '$year', 'Member');";
 
 			//echo $sql;
 
 
 
 			$result = mysqli_query( $connection, $sql );
-			if ( $result ) {
-				$smsg = "Success! BUT... <br> PLEASE CHECK YOUR SPAM INBOX FOR THE REGISTRATION EMAIL! Make sure to set THIS IS NOT SPAM. ";
-				
-				
-				$to = $email;
-$subject = "Thank you for registering to this!";
-$message = "Hey! Thanks for registering to Student Media Services. Make sure to set this email to not spam in order to get all the nessesary emails.";
+			$result2 = mysqli_query($connection, $sql2);
+			if ( $result && $result2) {
+				$smsg = "Success! You have now taken a step forward in life!";
 
-$headers = 'From: SMS <SMS@database.com>' . PHP_EOL .
-    'Reply-To: SMS <SMS@database.com>' . PHP_EOL .
-    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
-			
-			
+				$to = $email;
+				$subject = "Thank you for registering to this!";
+				$message = "Hey! Thanks for registering to Student Media Services. Make sure to set this email to not spam in order to get all the nessesary emails.";
+
+				$headers = 'From: SMS <SMS@database.com>' . PHP_EOL .
+		    'Reply-To: SMS <SMS@database.com>' . PHP_EOL .
+		    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+
+
 //mail($to, $subject, $message, $headers);
 //echo "<br>email to Project Manager sent";
 
@@ -87,8 +92,10 @@ $headers = 'From: SMS <SMS@database.com>' . PHP_EOL .
 
 
 			}
-		}
+		} else {
 
+		$fmsg = "Something went wrong! Make sure that your is already registered inside the database before you create your account. If any further issues persist, contact the Project Manager of SMS. ";
+}
 
 
 	} else {
@@ -148,7 +155,7 @@ $headers = 'From: SMS <SMS@database.com>' . PHP_EOL .
 				<input type="text" name="username" class="login-input" placeholder="Username" maxlength="100" required/>
 				<input type="password" name="password" id="input Password" class="login-input" placeholder="Password" maxlength="100" required/>
 				<input type="email" name="email" id="inputEmail" class="login-input" placeholder="Email address" maxlength="100" required/>
-				<input type="text" name="studentid" class="login-input" placeholder="Student ID" maxlength="100" required/>
+				<input type="number" name="studentid" class="login-input" placeholder="Student ID (just the numbers. i.e. 2019108)" maxlength="100" required/>
 
 				<input type="password" name="passwordAgain" id="input Password" class="login-input" maxlength="100" placeholder="Password Again" required>
 				<button class="btn btn-success">create</button>

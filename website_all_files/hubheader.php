@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 //Loads a session
 
@@ -20,16 +21,17 @@ if ( isset( $_SESSION[ 'studentid' ] ) ) {
 }
 include ( 'includes/dbh.inc.php' );
 include ( 'emailheader.php' );
+
 $sql = "SELECT * FROM students WHERE studentid = '$id'";
 //echo $id;
 $result = mysqli_query( $connection, $sql );
 while ( $student = $result->fetch_assoc() ):
-	
+
 $username_fullname = $student['name'];
 
 
 ?>
-			
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -94,45 +96,55 @@ $username_fullname = $student['name'];
 					<li>
                         <a href="mygroups.php"> <i class="menu-icon ti-shine"></i>My Info and Projects</a>
                     </li>
-					
+                    <li>
+                        <a href="tech_list_equipment.php"> <i class="menu-icon ti-align-justify"></i>Techhub Equipment</a>
+                    </li>
+
 					<li>
                         <a href="https://docs.google.com/spreadsheets/d/1AHKh38W3ocQ2liKP0oKMxwvfQe4TEyGuZkITqCbnBqs/edit?usp=sharing"> <i class="menu-icon ti-calendar"></i>SMS Events Calendar </a>
                     </li>
-					
+
 					<li>
-                        <a href="searchsig.php"> <i class="menu-icon ti-envelope"></i>View SIG </a>
+                        <a href="searchsig.php"> <i class="menu-icon ti-envelope"></i>View SIGs Info</a>
                     </li>
-					
-				
-					
-					
+
+					<li>
+                        <a href="https://docs.google.com/document/d/1IPKlWff6oZCOpg7aFB3vP8SqKsM4fbruToK1ZWy6QWg/edit#"> <i class="menu-icon ti-anchor"></i>SMS HANDBOOK</a>
+                    </li>
+
+
+
 					 <li>
                         <a href="labmonitor.php"> <i class="menu-icon ti-bolt-alt"></i>Equipment Certification</a>
                     </li>
-					 
+
 					 <li>
-                        <a href="breath_becomes_air.pdf"> <i class="menu-icon ti-book"></i>Equipment Handbook</a>
+                        <a href="DigitalMediaCatalogue-web.pdf"> <i class="menu-icon ti-book"></i>Equipment Catalogue</a>
                     </li>
-					
+
 					<li>
                         <a href="allprojects.php"> <i class="menu-icon ti-align-justify"></i>All Projects Table</a>
                     </li>
-					
+                    	<li>
+                        <a href="remove_self_project.php"> <i class="menu-icon ti-bolt-alt"></i>Drop from a Project</a>
+                    </li>
+
 					<li>
                         <a href="sig_attendance.php"> <i class="menu-icon ti-alarm-clock"></i>Attendance</a>
                     </li>
-					
-					
-				
-					
-					
+
+
+
+
+
+
 	<?php
-						if ( isset( $_SESSION[ 'is_leadership' ] ) ) { 
-							
-							?>					
-					
+						if ( isset( $_SESSION[ 'is_leadership' ] ) ) {
+
+							?>
+
                     <h3 class="menu-title">SMS Leadership Actions</h3><!-- /.menu-title -->
-					
+
 					       <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Search For...</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -144,22 +156,22 @@ $username_fullname = $student['name'];
                      <li>
                         <a href="searchproject.php"> <i class="menu-icon ti-rocket"></i>Alter Project Info</a>
                     </li>
-					
+
 					<li>
-                        <a href="mysig.php"> <i class="menu-icon ti-envelope"></i>My SIG </a>
+                        <a href="mysig.php"> <i class="menu-icon ti-envelope"></i> Manage My SIG </a>
                     </li>
-					
-				
-					
+
+
+
 					<?php if ( isset( $_SESSION[ 'exec_rights' ] ) ) { ?>
-					
+
                      <li>
                         <a href=" https://docs.google.com/document/d/1ZAs-7TtzxQ9RXrsh73YL5MToKB4IM0jgtVA1c3R_Z-M/edit#"> <i class="menu-icon ti-write"></i>Update Exec Notes </a>
                     </li>
-					
+
 					 <h3 class="menu-title">Tech Hub Actions</h3><!-- /.menu-title -->
-					
-					    
+
+
 
                      <li>
                         <a href="searchstudenteq.php"> <i class="menu-icon ti-rocket"></i>Search Student EQ</a>
@@ -170,32 +182,32 @@ $username_fullname = $student['name'];
 					  <li>
                         <a href="tech_add_equipment.php"> <i class="menu-icon ti-rocket"></i>Add Equipment</a>
                     </li>
-					
-					
-					
-					
+
+
+
+
 					<h3 class="menu-title">Exec/Developer Actions</h3><!-- /.menu-title -->
-					
+
 					      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Alter Files</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-map-o"></i><a href="exec_add_student.php">Add Student to SMS</a></li>
-							<li><i class="menu-icon fa fa-map-o"></i><a href="searchstudent.php">search student</a></li>
+							<li><i class="menu-icon fa fa-map-o"></i><a href="searchstudent.php">Search student</a></li>
 							<li><i class="menu-icon fa fa-map-o"></i><a href="emailshooter.php">Send Email Test</a></li>
-                           
-						
-						
-                            
+
+
+
+
                         </ul>
                     </li>
 
-					
-					
+
+
 					<?php } ?>
-					
-			
-             
-					
+
+
+
+
 <?php } ?>
                     <h3 class="menu-title">Others</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -203,7 +215,7 @@ $username_fullname = $student['name'];
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-sign-in"></i><a href="logout.php">Log out</a></li>
                             <li><i class="menu-icon fa fa-sign-in"></i><a href="register.php">Register</a></li>
-                            
+
                         </ul>
                     </li>
                 </ul>
@@ -212,8 +224,8 @@ $username_fullname = $student['name'];
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
-		
-	
+
+
     <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
@@ -237,27 +249,27 @@ $username_fullname = $student['name'];
                         <div class="dropdown for-notification">
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
-                            <span class="count bg-danger">3</span>
+                            <!--<span class="count bg-danger">0</span>-->
                           </button>
                           <div class="dropdown-menu" aria-labelledby="notification">
-                            <p class="red">You have 3 Notification</p>
+                            <p class="red">You have 3 Notifications</p>
                             <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <i class="fa fa-check"></i>
-                                <p>Server #1 overloaded.</p>
+                                <p>Have a good day!</p>
                             </a>
                             <a class="dropdown-item media bg-flat-color-4" href="#">
                                 <i class="fa fa-info"></i>
-                                <p>The Sichuan has entered the game.</p>
+                                <p>Take good care of equipment!</p>
                             </a>
                             <a class="dropdown-item media bg-flat-color-5" href="#">
                                 <i class="fa fa-warning"></i>
-                                <p>Fleet 32 has gone down!</p>
+                                <p>No alice this notification isn't going away</p>
                             </a>
                           </div>
                         </div>
 
                         <div class="dropdown for-message">
-                          
+
                         </div>
                     </div>
                 </div>
@@ -278,7 +290,7 @@ $username_fullname = $student['name'];
                         </div>
                     </div>
 
-                    
+
 
                 </div>
             </div>
@@ -311,7 +323,7 @@ $username_fullname = $student['name'];
 			$fmsg = $_GET[ 'error' ]; } ?>
 		<?php 	if ( isset( $_GET[ 'success' ] ) ) {
 			$smsg = $_GET[ 'success' ]; } ?>
-		
+
 							<?php if(isset($smsg)){ ?>
 							<div class="alert alert-success" role="alert" style="margin-top: 20px;">
 								<?php echo $smsg; ?> </div>
@@ -320,8 +332,8 @@ $username_fullname = $student['name'];
 							<div class="alert alert-danger" role="alert" style="margin-top: 20px;">
 								<?php echo $fmsg; ?> </div>
 							<?php } ?>
-		
-	
+
+
     <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
@@ -336,9 +348,9 @@ $username_fullname = $student['name'];
     <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
 		<?php endwhile ?>
-		
-		
-<!--		
+
+
+<!--
 
 
 
@@ -352,7 +364,7 @@ $username_fullname = $student['name'];
 
 		</div>
 	</div>
-	
+
 </div>
 
 
@@ -367,15 +379,3 @@ $username_fullname = $student['name'];
 
 
 -->
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
