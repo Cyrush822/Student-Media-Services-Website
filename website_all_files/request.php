@@ -288,16 +288,16 @@ try {
 }
 
 
-if ( isset( $_POST[ "editing" ] ) ) {
-	$to = $visual_design_email;
-	$to2 = $visual_design_email2;
-	$to3 = $visual_design_email3;
-	$subject = "SMS Request to Video Productions";
+if ( isset( $_POST[ "filmmaking" ] ) ) {
+	$to = $filmmaking_email;
+	$to2 = $filmmaking_email2;
+	$to3 = $filmmaking_email3;
+	$subject = "SMS Request to Filmmaking";
 	//$message = "Hi";
 			$message = "<h2>Someone has submitted a request!</h2>
 
 		<p>
-		Hey leader(s) of Video Productions! We've received a request that might pertain to your field of expertise. This project request will be in sms.concordiashanghai.org waiting to be activated when you find someone who could lead it. If this project request has nothing to do with this SIG then I guess just contact the project manager saying s/he needs to fix something in his buggy code.
+		Hey leader(s) of Filmmaking! We've received a request that might pertain to your field of expertise. This project request will be in sms.concordiashanghai.org waiting to be activated when you find someone who could lead it. If this project request has nothing to do with this SIG then I guess just contact the project manager saying s/he needs to fix something in his buggy code.
 		<br>
 		<br>
 		Anyhow, here are the details of the request:
@@ -849,7 +849,7 @@ create_years_dropdown($year);
 							<input type="checkbox" name="livestream" value="livestream"> Livestream Video Capture<br><br>
 							<input type="checkbox" name="music" value="music"> Music Composition<br><br>
 							<input type="checkbox" name="videogame" value="videogame"> Video Game Development<br><br>
-							<input type="checkbox" name="editing" value="editing"> Video Productions/Editing <br><br>
+							<input type="checkbox" name="filmmaking" value="filmmaking"> Video Production/Filmmaking <br><br>
 							<input type="checkbox" name="documentation" value="documentation"> Video/Photographic Event Documentation<br><br>
 
 						</div>
