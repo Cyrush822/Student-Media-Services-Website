@@ -1,5 +1,7 @@
 <?php
 
+#Go to request.php to find add addresses here over there
+
 include 'includes/email_username_password.php';
 
 
@@ -42,6 +44,10 @@ $machine_learning_email = 'robert2022362@concordiashanghai.org';
 $machine_learning_email2 = 'charles2021407@concordiashanghai.org';
 
 $music_composition_email = 'kevin2021392@concordiashanghai.org';
+
+$filmmaking_email = 'alan2021233@concordiashanghai.org';
+$filmmaking_email2 = 'vivien2023313@concordiashanghai.org';
+$filmmaking_email3 = 'felipe2022347@concordiashanghai.org';
 
 //literally everyone
 
