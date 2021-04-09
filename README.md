@@ -3,7 +3,6 @@
 <h3>Example: sms.concordiashanghai.org</h3>
 *Cyrus and Alan's fork of Student-Media-Services-Website by NickDST for 20-21*
 
-test
 <br>
 
 This is the second iteration of the project management system for SMS to log SMS Projects, project requests, service hours, Student Interest Groups, equipment catalog, student information and more.
