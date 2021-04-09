@@ -50,8 +50,10 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		$count = mysqli_num_rows( $studentidsqlres );
 
 		if ( $count == 1 ) {
-			$csmsg .= "Student exists in database... Attempting to create account.";
-			$studentexists = "true";
+			//Note to self: get rid of all the code that requires students to exist in database prior to registering
+
+			// $csmsg .= "Student exists in database... Attempting to create account.";
+			// $studentexists = "true";
 
 		} else {
 		    // $error = "true";
@@ -88,13 +90,13 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 			} else {
-				$fmsg = "User Registration Failed <br><br> Make sure you are already checked inside the database!";
+				$fmsg = "User Registration error <br><br> Contact the Project Manager of SMS";
 
 
 			}
 		} else {
 
-		$fmsg = "Something went wrong! Make sure that your is already registered inside the database before you create your account. If any further issues persist, contact the Project Manager of SMS. ";
+		// $fmsg = "Something went wrong! Make sure that your is already registered inside the database before you create your account. If any further issues persist, contact the Project Manager of SMS. ";
 }
 
 
