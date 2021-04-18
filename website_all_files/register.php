@@ -7,6 +7,7 @@ require_once( 'includes/dbh.inc.php' );
 //print_r($_POST);
 if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$username = mysqli_real_escape_string( $connection, $_POST[ "username" ] );
+	$name = mysqli_real_escape_string( $connection, $_POST[ "name" ] );
 	$email = mysqli_real_escape_string( $connection, $_POST[ "email" ] );
 	$studentid = mysqli_real_escape_string( $connection, $_POST[ "studentid" ] );
 	$password = md5( $_POST[ "password" ] );
@@ -40,7 +41,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		$count = mysqli_num_rows( $studentidsqlres );
 
 		if ( $count == 1 ) {
-			$fmsg = "Student ID Already Exists";
+			$fmsg = "Student ID Already Exists ya yeet";
 			$error = "true";
 
 		}
@@ -65,7 +66,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 			$sql = "INSERT INTO login (username, contact, password, studentid) VALUES ('$username', '$email', '$password', '$studentid');";
 			$year = substr($studentid,0,4);
-			$sql2 = "INSERT INTO students (studentid, name, contact, year, position) VALUES ('$studentid', '$username', '$email', '$year', 'Member');";
+			$sql2 = "INSERT INTO students (studentid, name, contact, year, position) VALUES ('$studentid', '$name', '$email', '$year', 'Member');";
 
 			//echo $sql;
 
@@ -90,7 +91,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 			} else {
-				$fmsg = "User Registration error <br><br> Contact the Project Manager of SMS";
+				// $fmsg = "User Registration error <br><br> Contact the Project Manager of SMS";
 
 
 			}
@@ -155,6 +156,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 			<form class="login-form" action="#" method="post">
 				<input type="text" name="username" class="login-input" placeholder="Username" maxlength="100" required/>
+				<input type="text" name="name" class="login-input" placeholder="Full Name" maxlength="100" required/>
 				<input type="password" name="password" id="input Password" class="login-input" placeholder="Password" maxlength="100" required/>
 				<input type="email" name="email" id="inputEmail" class="login-input" placeholder="Email address" maxlength="100" required/>
 				<input type="number" name="studentid" class="login-input" placeholder="Student ID (just the numbers. i.e. 2019108)" maxlength="100" required/>
