@@ -71,10 +71,10 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 
-			$result = mysqli_query( $connection, $sql );
+			$result = mysqli_query($connection, $sql);
 			$result2 = mysqli_query($connection, $sql2);
 			if ( $result && $result2) {
-				$smsg = "Success! You have now taken a step forward in life!";
+				$smsg = "Success! You have now taken a step forward in life! *If you are a leader, ask the webdev people to give you leader rights.";
 
 				$to = $email;
 				$subject = "Thank you for registering to this!";
