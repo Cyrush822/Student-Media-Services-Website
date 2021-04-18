@@ -41,7 +41,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		$count = mysqli_num_rows( $studentidsqlres );
 
 		if ( $count == 1 ) {
-			$fmsg = "Student ID Already Exists ya";
+			$fmsg = "Student ID Already Exists";
 			$error = "true";
 
 		}
@@ -86,8 +86,8 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 
 
-//mail($to, $subject, $message, $headers);
-//echo "<br>email to Project Manager sent";
+				//mail($to, $subject, $message, $headers);
+				//echo "<br>email to Project Manager sent";
 
 
 			} else {
