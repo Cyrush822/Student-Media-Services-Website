@@ -64,17 +64,18 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		if ( $error != "true"
 	/*and $studentexists == "true" */) {
 
-			$sql = "INSERT INTO login (username, contact, password, studentid) VALUES ('$username', '$email', '$password', '$studentid');";
+			$sql = "INSERT INTO login (username, password, studentid, contact) VALUES ('$username', '$password', '$studentid', '$email');";
 			$year = substr($studentid,0,4);
 			$sql2 = "INSERT INTO students (studentid, name, contact, year, position) VALUES ('$studentid', '$name', '$email', '$year', 'Member');";
 
 			//echo $sql;
+		    mysqli_query($connection, $sql);
+			mysqli_query($connection, $sql2);
 
+            $check1 = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM login WHERE studentid = '$studentid';"));
+            $check2 = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM students WHERE studentid = '$studentid';"));
 
-
-			$result = mysqli_query($connection, $sql);
-			$result2 = mysqli_query($connection, $sql2);
-			if ( $result && $result2) {
+			if ($check1 > 0 && $check2 > 0) {
 				$smsg = "Success! You have now taken a step forward in life! *If you are a leader, ask the webdev people to give you leader rights.";
 
 				$to = $email;
@@ -82,8 +83,8 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 				$message = "Hey! Thanks for registering to Student Media Services. Make sure to set this email to not spam in order to get all the nessesary emails.";
 
 				$headers = 'From: SMS <SMS@database.com>' . PHP_EOL .
-		    'Reply-To: SMS <SMS@database.com>' . PHP_EOL .
-		    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+    		    'Reply-To: SMS <SMS@database.com>' . PHP_EOL .
+    		    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 
 
 				//mail($to, $subject, $message, $headers);
@@ -91,7 +92,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 			} else {
-				// $fmsg = "User Registration error <br><br> Contact the Project Manager of SMS";
+				$fmsg = "Oopsies! Contact the WebDev people of SMS";
 
 
 			}
