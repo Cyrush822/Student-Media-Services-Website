@@ -5,15 +5,15 @@ session_start();
 require_once( 'includes/dbh.inc.php' );
 
 
-//$projectid = mysqli_real_escape_string( $connection, $_GET[ 'id' ] );
-$project_name = mysqli_real_escape_string( $connection, $_GET[ 'name' ] );
+$projectid = mysqli_real_escape_string( $connection, $_GET[ 'projectid' ] );
+//$project_name = mysqli_real_escape_string( $connection, $_GET[ 'name' ] );
 
-$sql = "SELECT * FROM project_list WHERE project_name = '$project_name'";
+$sql = "SELECT * FROM project_list WHERE projectid = '$projectid'";
 //echo $id;
 $result = mysqli_query( $connection, $sql );
 while ( $projectinfo = $result->fetch_assoc() ):
-	
-$projectid = $projectinfo['projectid'];
+
+$project_name = $projectinfo['project_name'];
 
 endwhile;
 ?>
@@ -22,7 +22,7 @@ endwhile;
 			$fmsg = $_GET[ 'error' ]; } ?>
 		<?php 	if ( isset( $_GET[ 'success' ] ) ) {
 			$smsg = $_GET[ 'success' ]; } ?>
-		
+
 							<?php if(isset($smsg)){ ?>
 							<div class="alert alert-success" role="alert" style="margin-top: 20px;">
 								<?php echo $smsg; ?> </div>
@@ -71,30 +71,27 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$result = mysqli_query( $connection, $sql );
 	$count = mysqli_num_rows( $result );
 	if ( $count == 1 ) {
-		
-		while ( $student = $result->fetch_assoc() ):
-		
-		$studentid = $student['studentid'];
-		
-		endwhile;
-		
-		
-	
-		$_SESSION[ 'studentid' ] = $studentid;
-			echo $_SESSION['studentid'];
-		
-		
-		
-		
-		
-		
 
-		//echo '<script>window.location.href = "hub.php";</script>';
+		while ( $student = $result->fetch_assoc() ):
+
+		$studentid = $student['studentid'];
+
+		endwhile;
+
+
+
+		$_SESSION[ 'studentid' ] = $studentid;
+
+
+
+
+
+
 
 
 	} else {
 		//echo "Invalid Username/Password";
-		echo '<script>window.location.href = "login.php?error=Invalid Username/Password";</script>';	
+		echo '<script>window.location.href = "login.php?error=Invalid Username/Password";</script>';
 		//echo "<script>window.location.href = 'login.php?error='$ello' Username/Password';</script>";
 
 	}
@@ -106,20 +103,18 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 				if ( isset( $_SESSION[ 'studentid' ] ) ) {
 					?>
 
-			
+
 					<?php
-					
-					if ( isset( $_GET[ 'name' ] ) ) {
-						
+
+					if ( isset( $_GET[ 'projectid' ] ) ) {
+
 						echo "<script> window.location.href = 'searchprojectdesc.php?name=" . $project_name . "&id=" . $projectid . "'</script>";
 					}
-					
-					
-					
-					
-					
 
-					echo "Currently Logged in as " . $_SESSION[ 'studentid' ];
+
+
+
+
 					echo '<script>window.location.href = "hub.php";</script>';
 					} ?>
 
@@ -134,12 +129,12 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
   <title>SMS Login</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-  
-  
+
+
+
       <link rel="stylesheet" href="css/style.css">
 
-  
+
 </head>
 
 <body>
@@ -149,7 +144,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
     <div class="left">
       <div class="login">Login</div>
       <div class="eula">By logging in you agree to the ridiculously long terms that you didn't bother to read. <br> <a href="register.php">Don't have an account? Click me</a></div>
-	 
+
     </div>
     <div class="right">
       <svg viewBox="0 0 320 300">
@@ -180,7 +175,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
         <input type="username" id="email" name = "username">
         <label for="password">Password</label>
         <input type="password" id="password" name = "password">
-        <input type="submit" id="submit" value="Submit">
+        <input type="submit" id="submit" value="Login">
 			  </form>
       </div>
     </div>
@@ -188,7 +183,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js'></script>
 
-  
+
 
     <script  src="js/index.js"></script>
 
