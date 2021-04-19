@@ -46,21 +46,6 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 		}
 
-		$studentidsql = "SELECT * FROM `students` WHERE studentid = '$studentid'";
-		$studentidsqlres = mysqli_query( $connection, $studentidsql );
-		$count = mysqli_num_rows( $studentidsqlres );
-
-		if ( $count == 1 ) {
-			//Note to self: get rid of all the code that requires students to exist in database prior to registering
-
-			// $csmsg .= "Student exists in database... Attempting to create account.";
-			// $studentexists = "true";
-
-		} else {
-		    // $error = "true";
-
-		}
-
 		if ( $error != "true"
 	/*and $studentexists == "true" */) {
 
@@ -83,8 +68,8 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 				$message = "Hey! Thanks for registering to Student Media Services. Make sure to set this email to not spam in order to get all the nessesary emails.";
 
 				$headers = 'From: SMS <SMS@database.com>' . PHP_EOL .
-    		    'Reply-To: SMS <SMS@database.com>' . PHP_EOL .
-    		    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+		    'Reply-To: SMS <SMS@database.com>' . PHP_EOL .
+		    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 
 
 				//mail($to, $subject, $message, $headers);
