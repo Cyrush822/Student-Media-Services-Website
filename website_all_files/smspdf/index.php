@@ -113,6 +113,8 @@
             $pdf->SetTextColor(220, 184, 63);
             $pdf->SetXY(218, 113);
 
+            // No longer need second page
+            /*
             $pdf->AddPage();
             // set the source file
             $pdf->setSourceFile('master4.pdf');
@@ -120,6 +122,7 @@
             $tplIdx = $pdf->importPage(2);
             // use the imported page and place it at position 10,10 with a width of 100 mm
             $pdf->useTemplate($tplIdx, 0, 0);
+            */
         }
 
 
