@@ -32,7 +32,7 @@
     $people_in_multiple_sigs = explode(", ", "Joe Liang, Jaclyn Wong, Mamie Yang, Henie Zhang, Heewon Chang, Daphne Sng, Hoon Kim");
     $multiple_sigs = explode(", ", "Filmmaking and DMS, VG and UH, VG and UH, VG and UH, DMS and UH, DMS and UH, Live Stream and UH");
 
-    $service_hrs_arr = array("Joe Liang"=>array("Filmmaking","DMS",11,0), "Jacyln Wong"=>array("VG","UH",14,2), "Mamie Yang"=>array("VG","UH",12,2), "Henie Zhang"=>array("VG","UH",11,12), "Heewon Change"=>array("DMS","UH",3,6), "Daphne Sng"=>array("DMS","UH",3,4), "Hoon Kim"=>array("Live Stream","UH",5,2));
+    $service_hrs_arr = array("Joe Liang"=>array("Filmmaking","DMS",11,0), "Jacyln Wong"=>array("VG","UH",14,2), "Mamie Yang"=>array("VG","UH",12,2), "Henie Zhang"=>array("VG","UH",11,12), "Heewon Chang"=>array("DMS","UH",3,6), "Daphne Sng"=>array("DMS","UH",3,4), "Hoon Kim"=>array("Live Stream","UH",5,2));
 
     foreach($service_hrs_arr as $member=>$service_hrs) {
         $sig1 = $service_hrs_arr[$member][0];
